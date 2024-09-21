@@ -1,3 +1,4 @@
+import 'package:assessment_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:assessment_app/blocs/auth/auth_bloc.dart';
@@ -16,6 +17,8 @@ class LoginScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is AuthSuccess) {
             // Navigate to home screen (not implemented)
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => HomeScreen()));
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.error)),

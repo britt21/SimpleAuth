@@ -1,8 +1,10 @@
+import 'package:assessment_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:assessment_app/blocs/auth/auth_bloc.dart';
 import 'package:assessment_app/blocs/auth/auth_event.dart';
 import 'package:assessment_app/blocs/auth/auth_state.dart';
+
 
 class SignUpScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -15,7 +17,10 @@ class SignUpScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is AuthSuccess) {
             // Navigate to login screen
-            Navigator.pop(context);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => LoginScreen()),
+            );            print("Signup Successful");
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.error)),
